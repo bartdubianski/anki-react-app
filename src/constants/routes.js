@@ -1,4 +1,4 @@
-export const LANDING = '/';
+export const HOME = '/';
 export const STUDY_NOW = '/StudyNow'
 export const DECKS = '/Decks';
 export const ADD_CARD = '/AddCard';

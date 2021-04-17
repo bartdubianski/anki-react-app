@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import SignOutButton from '../SignOut';
-import * as ROUTES from '../../constants/routes';
- 
-import '../../styles/navigation.scss';
+import SignOut from './SignOut';
+import * as ROUTES from '../constants/routes';
 
 const Navigation = ({ authUser }) => (
   <div className="Navigation">{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
@@ -13,7 +11,7 @@ const Navigation = ({ authUser }) => (
 const NavigationAuth = () => (
   <ul>
     <li>
-      <Link to={ROUTES.LANDING}>Welcome</Link>
+      <Link to={ROUTES.HOME}>Welcome</Link>
     </li>
     <li>
       <Link to={ROUTES.STUDY_NOW}>Study Now</Link>
@@ -22,21 +20,16 @@ const NavigationAuth = () => (
       <Link to={ROUTES.DECKS}>Manage Decks</Link>
     </li>
     <li>
-      <Link to={ROUTES.ADD_CARD}>Quick Add New Card</Link>
+      <Link to={ROUTES.ADD_CARD}>Quick Add Card</Link>
     </li>
-    <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
-    <li>
-      <SignOutButton />
-    </li>
+    <SignOut />
   </ul>
 );
 
 const NavigationNonAuth = () => (
   <ul>
     <li>
-      <Link to={ROUTES.LANDING}>Welcome</Link>
+      <Link to={ROUTES.HOME}>Welcome</Link>
     </li>
     <li>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
