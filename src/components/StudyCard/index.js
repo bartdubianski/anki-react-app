@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = ({id, question, hint, answer}) => {
+const StudyCard = ({id, question, hint, answer}) => {
     return (
         <div className="card-container">
             <div className="card">
@@ -16,4 +16,4 @@ const Card = ({id, question, hint, answer}) => {
     )
 }
 
-export default Card
+export default StudyCard;

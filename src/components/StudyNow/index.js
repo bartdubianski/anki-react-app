@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import Card from '../Card';
+import StudyCard from '../StudyCard';
 
-const Home = () => {
+const StudyNow = () => {
     const cardList = [
         {id: 1, question: "1 pytanie", hint: "1 podpowiedz", answer: "1 odpowiedz"},
         {id: 2, question: "2 pytanie", hint: "2 podpowiedz", answer: "2 odpowiedz"},
         {id: 3, question: "3 pytanie", hint: "3 podpowiedz", answer: "3 odpowiedz"}
       ];
-    
+
       const [currentCard, setCurrentCard] = useState(cardList[0]);
     
       const showRandomCardHandler = () => {
@@ -15,16 +15,21 @@ const Home = () => {
         setCurrentCard(cardList[cardID]);
       }
 
+
     return (
         <div>
-            <div className="card">
-            <Card 
+            <h1>Studied 0 cards today.</h1>
+            <h2>My First Deck</h2>
+            <p>Cards due: 3</p>
+            <p>New cards: 6</p>
+            <button>Start Studying</button>
+
+            <StudyCard 
                 key={currentCard.id}
                 question={currentCard.question}
                 hint={currentCard.hint}
                 answer={currentCard.answer}
                 />
-            </div>
             <button 
                 className="btn"
                 onClick={showRandomCardHandler}>
@@ -34,4 +39,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default StudyNow;
