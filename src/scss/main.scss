@@ -1,4 +1,4 @@
-$primary-color: #525dce;
+$primary-color: #8d94e4cc;
 $primary-background: #222;
 
 body {
@@ -10,32 +10,64 @@ body {
       'Helvetica Neue', sans-serif;
   }
 
-  .Navigation {
-    background-color: $primary-background;
-  
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-  
-      display: flex;
-      justify-content: center;
+.Navigation {
+  background-color: $primary-background;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    margin: 10px 20px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a,
+  a:visited {
+    color: #ffffff;
+  }
+
+  a:hover {
+    color: $primary-color;
+  }
+}
+
+
+.card-container {
+    cursor: pointer;
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    
+  .card {
+    border: 1px solid $primary-background;
+    border-radius: 25px;
+    background-color: $primary-color;
+    .front {
+      text-align: center;
+      .question {
+        color: #333;
+        font-size: 1em;
+      }
+      .hint {
+        color: #333;
+        font-size: 0.7em;
+      }
     }
-  
-    li {
-      margin: 10px 20px;
-    }
-  
-    a {
-      text-decoration: none;
-    }
-  
-    a,
-    a:visited {
-      color: #ffffff;
-    }
-  
-    a:hover {
-      color: $primary-color;
+    .back {
+      text-align: center;
+      .answer {
+        color: rgba(200, 10, 10, 1);
+        font-size: 1em;
+      }
     }
   }
+}

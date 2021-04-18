@@ -1,6 +1,9 @@
 import React from 'react';
+import {firebase} from './initFirebase';
 
-const StudyCard = ({id, question, hint, answer}) => {
+
+const Card = ({key, question, hint, answer}) => {
+
     return (
         <div className="card-container">
             <div className="card">
@@ -13,7 +16,7 @@ const StudyCard = ({id, question, hint, answer}) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default StudyCard;
+export default Card;
