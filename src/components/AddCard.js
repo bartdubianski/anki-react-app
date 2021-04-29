@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { firebase } from './initFirebase'
-import { useHistory } from 'react-router-dom'
+import { firebase } from './initFirebase';
+import { Button, Form, Card, Container, Row, Col } from 'react-bootstrap';
 
 const db = firebase.database();
 const questionText = "Enter the question";
@@ -13,70 +13,76 @@ const AddCard = () => {
     const [hint, setHint] = useState(hintText);
     const [answer, setAnswer] = useState(answerText);
     const [message, setMessage] = useState("");
-    const [deck, setDeck] = useState("general");
-    const history = useHistory();
 
     return (
-        <>
-        <h1>Add New Card</h1>
-            <select>
-                <option value="basic">Basic Flashcard</option>
-            </select>
-            <p>New Card</p>
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    const cardsRef = db.ref("cards");
-                    const newCardRef = cardsRef.push();
-                    newCardRef.set({
-                        question,
-                        hint,
-                        answer,
-                        familiarity: 1,
-                        cardDue: true,
-                        deck
-                    });
-                    setQuestion(questionText);
-                    setHint(hintText);
-                    setAnswer(answerText);
-                    setMessage("Card added to the database!")
-                }}
-            >
-                <label>
-                    Question:
-                    <input 
-                        type="text"
-                        name="question"
-                        value={question}
-                        onChange={(e) => setQuestion(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Hint:
-                    <input 
-                        type="text"
-                        name="hint"
-                        value={hint}
-                        onChange={(e) => setHint(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Answer:
-                    <input 
-                        type="text"
-                        name="answer"
-                        value={answer}
-                        onChange={(e) => setAnswer(e.target.value)}
-                    />
-                </label>
-            
-                <select>
-                    <option value="general">General</option>
-                </select>
-                <button type="submit">Add Card</button>
-            </form>
-            <p>{message}</p>
-            </>
+        <Container>
+            <Row>
+                <Col className="mt-3">
+                    <Card>
+                        <Card.Header>New Card</Card.Header>
+                        <Card.Body>
+                            <Form 
+                                onSubmit={(e) => {
+                                e.preventDefault();
+                                const cardsRef = db.ref("cards");
+                                const newCardRef = cardsRef.push();
+                                newCardRef.set({
+                                    question,
+                                    hint,
+                                    answer,
+                                    familiarity: 1,
+                                    cardDue: true
+                                });
+                                setQuestion(questionText);
+                                setHint(hintText);
+                                setAnswer(answerText);
+                                setMessage("New Card added to the Deck!")
+                             }}>
+                                <Form.Group controlID="addCardQuestion">
+                                    <Form.Label>Question:</Form.Label>
+                                    <Form.Control 
+                                        size="sm"
+                                        type="text"
+                                        placeholder="Enter question here"
+                                        value={question}
+                                        onChange={(e) => setQuestion(e.target.value)}
+                                    />
+                                </Form.Group>
+                                <Form.Group controlID="addCardHint">
+                                    <Form.Label>Question:</Form.Label>
+                                    <Form.Control 
+                                        size="sm"
+                                        type="text"
+                                        placeholder="Enter hint here"
+                                        value={hint}
+                                        onChange={(e) => setHint(e.target.value)}
+                                        />
+                                </Form.Group>
+                                <Form.Group controlID="addCardAnswer">
+                                    <Form.Label>Question:</Form.Label>
+                                    <Form.Control 
+                                        size="sm"
+                                        type="text"
+                                        placeholder="Enter answer here"
+                                        value={answer}
+                                        onChange={(e) => setAnswer(e.target.value)}
+                                        />
+                                </Form.Group>
+                                <Button 
+                                    variant="success"
+                                    type="submit"
+                                    size="sm" 
+                                    className="mr-1"
+                                >
+                                    Add Card to your Deck
+                                </Button>
+                            </Form>
+                            <p className="mt-2">{message}</p>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

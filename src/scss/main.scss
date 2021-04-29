@@ -1,73 +1,48 @@
-$primary-color: #8d94e4cc;
-$primary-background: #222;
+*, *:before, *:after{
+    box-sizing: border-box;
+}
 
-body {
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
     margin: 0;
     padding: 0;
-  
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
-  }
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: none;
+}
 
-.Navigation {
-  background-color: $primary-background;
+footer, header, nav, section, main{
+    display: block;
+}
 
-  ul {
+body{
+    line-height: 1;
+}
+
+ol, ul{
     list-style: none;
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-    justify-content: center;
-  }
-
-  li {
-    margin: 10px 20px;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  a,
-  a:visited {
-    color: #ffffff;
-  }
-
-  a:hover {
-    color: $primary-color;
-  }
 }
 
-
-.card-container {
-    cursor: pointer;
-    width: 300px;
-    padding: 10px;
-    margin: 10px;
-    
-  .card {
-    border: 1px solid $primary-background;
-    border-radius: 25px;
-    background-color: $primary-color;
-    .front {
-      text-align: center;
-      .question {
-        color: #333;
-        font-size: 1em;
-      }
-      .hint {
-        color: #333;
-        font-size: 0.7em;
-      }
-    }
-    .back {
-      text-align: center;
-      .answer {
-        color: rgba(200, 10, 10, 1);
-        font-size: 1em;
-      }
-    }
-  }
+blockquote, q{
+    quotes: none;
 }
+
+blockquote:before, blockquote:after, q:before, q:after{
+    content: '';
+    content: none;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input{
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+@import "~bootstrap/scss/bootstrap";

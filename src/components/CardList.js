@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import AddCard from './AddCard';
-import Card from './Card';
+import AnkiCard from './AnkiCard';
 import { firebase } from './initFirebase';
+import { CardColumns, Container, Row, Col } from 'react-bootstrap';
 
 
 const CardList = () => {
-    const [addCard, setAddCard] = useState(false);
+
     const [cardsList, setCardsList] = useState();
 
     useEffect(() =>{
@@ -21,27 +21,21 @@ const CardList = () => {
     }, [])
 
     return (
-        <div>
-            <h1>Card List:</h1>
+        <Container>
+            <Row>    
             {cardsList ? cardsList.map((card) => (
-                <Card
+                <Col md={4} className="mt-3" key={`${card.id}`}>
+                <AnkiCard
                     key={card.key}
                     question={card.question}
                     hint={card.hint}
                     answer={card.answer}
                 />
+                </Col>
                 ))
                 : ''}
-            <button 
-                onClick={() => setAddCard(true)}
-            >
-            Add New Card
-            </button>
-            {addCard 
-                ? <AddCard />
-                : ""
-            }
-        </div>
+            </Row>
+        </Container>
     );
 };
 

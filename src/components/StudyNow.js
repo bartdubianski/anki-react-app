@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import Card from './Card';
+import AnkiCard from './AnkiCard';
 import { firebase } from './initFirebase';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const StudyNow = () => {
     const [cardsList, setCardsList] = useState([]);
@@ -31,24 +32,38 @@ const StudyNow = () => {
 
 
     return (
-        <div>
-            <h1>Study Cards</h1>
-            <button 
-                className="btn"
-                onClick={startLearningHandler}
-            >
-            {startLearning ? "Next Card" : "Start Studying"}
-            </button>
-            {startLearning ? (
-                    <Card
-                        key={currentCard.id}
-                        question={currentCard.question}
-                        hint={currentCard.hint}
-                        answer={currentCard.answer}
-                    />
-            )
-            : ''}
-        </div>
+        <Container>
+            <Row className="mt-4">
+                <Col>
+                {startLearning ? (
+                        <AnkiCard
+                            key={currentCard.id}
+                            question={currentCard.question}
+                            hint={currentCard.hint}
+                            answer={currentCard.answer}
+                        />
+                )
+                : ''}
+                </Col>
+            </Row>
+                {startLearning 
+                    ? <Button 
+                        className="mt-2 mb-4"
+                        onClick={startLearningHandler}
+                    >
+                        Next Card
+                    </Button>
+                    : <Button 
+                    size="lg"
+                    className="mt-2 mb-4"
+                    onClick={startLearningHandler}
+                    >
+                        Stard New Session
+                    </Button>
+                }
+                
+            
+        </Container>
     );
 };
 
